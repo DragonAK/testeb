@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  operacao: MyString
+  qtd: 1
+  material: one
+
+two:
+  operacao: MyString
+  qtd: 1
+  material: two

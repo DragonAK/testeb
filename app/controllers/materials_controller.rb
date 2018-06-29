@@ -64,12 +64,11 @@ def remove
 
   # PATCH/PUT /materials/1
   # PATCH/PUT /materials/1.json
+
   def update
-    if @material.name == "o"
-      puts "AYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
-    end
     respond_to do |format|
       if @material.update(material_params)
+        #logger.info "Log de atualização de material: #{material_params}"
         format.html { redirect_to @material, notice: 'Material was successfully updated.' }
         format.json { render :show, status: :ok, location: @material }
       else
