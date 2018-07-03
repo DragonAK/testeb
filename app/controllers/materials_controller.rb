@@ -81,10 +81,14 @@ def remove
   # DELETE /materials/1
   # DELETE /materials/1.json
   def destroy
-    @material.destroy
     respond_to do |format|
+      if @material.destroy
       format.html { redirect_to materials_url, notice: 'Material was successfully destroyed.' }
       format.json { head :no_content }
+      else
+      format.html { redirect_to materials_url, notice: 'Material has logs attached to it.' }
+      format.json { head :no_content }
+    end
     end
   end
 

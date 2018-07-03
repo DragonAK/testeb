@@ -2,16 +2,22 @@ class Material < ApplicationRecord
 
   has_many :logs, autosave: true
 
-  before_save :create_log
+  before_destroy :check_log
 
-  conn = ActiveRecord::Base.connection
+  before_save :create_log, unless: :new_record?
 
-  def checkneg(id)
-    result = conn.execute "SELECT amount from MATERIALS where ID="+id  % conn.quote("' OR 1=1 #");
-    puts result
-  end
+ 
+
+  private
+
+def check_log
+return true if logs.count == 0
+throw(:abort)  
+end
+
 
   def create_log
+    #return if new_record?
     if amount_was > amount
       operacao = "Retirada"
     else
@@ -23,8 +29,6 @@ class Material < ApplicationRecord
       qtd: (amount_was - amount).abs
     })
   end
-
-
 
 end
 
