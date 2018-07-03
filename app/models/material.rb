@@ -4,6 +4,8 @@ class Material < ApplicationRecord
 
   attr_accessor :whodunnit
   
+  before_validation :show_logs 
+
   before_destroy :check_log
 
   before_save :create_log, unless: :new_record?
