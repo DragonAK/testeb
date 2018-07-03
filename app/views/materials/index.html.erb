@@ -19,7 +19,7 @@
         <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         <td><%= link_to 'Logs', material.show_logs %></td>
+         <td><%= link_to 'Logs', log_material_path(material) %></td>
       </tr>
     <% end %>
   </tbody>

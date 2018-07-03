@@ -20,7 +20,7 @@ class Material < ApplicationRecord
   end
 
 def show_logs
-  return logs
+  @logs = logs
 end
 
   def create_log

@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :materials
+  resources :materials do
+    member do
+      get :log
+    end
+  end
 
   as :user do
   	get '/users/sign_out' => 'devise/sessions#destroy'
