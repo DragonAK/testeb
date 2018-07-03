@@ -13,6 +13,8 @@ class MaterialsController < ApplicationController
   def show
   end
 
+def log
+end
   # GET /materials/new
   def new
     @material = Material.new
@@ -66,8 +68,9 @@ def remove
   # PATCH/PUT /materials/1.json
 
   def update
+
     respond_to do |format|
-      if @material.update(material_params)
+      if @material.update(material_params.merge({ whodunnit: current_user.id }))
         #logger.info "Log de atualização de material: #{material_params}"
         format.html { redirect_to @material, notice: 'Material was successfully updated.' }
         format.json { render :show, status: :ok, location: @material }
@@ -86,7 +89,7 @@ def remove
       format.html { redirect_to materials_url, notice: 'Material was successfully destroyed.' }
       format.json { head :no_content }
       else
-      format.html { redirect_to materials_url, notice: 'Material has logs attached to it.' }
+      format.html { redirect_to materials_url, notice: @material.errors[:base].to_sentence }
       format.json { head :no_content }
     end
     end
