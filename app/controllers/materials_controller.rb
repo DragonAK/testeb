@@ -6,14 +6,6 @@ class MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @materials = Material.all
-    t = Time.now
-    puts t
-    #@logs.each do |log|
-      #puts log.user_id
-      #puts log.operacao
-      #puts log.qtd
-      #puts log.material_id
-    #end
   end
 
   # GET /materials/1
@@ -82,7 +74,7 @@ def remove
   def update
 
     respond_to do |format|
-      if @material.update(material_params.merge({ whodunnit: current_user.id }))
+      if @material.update(material_params)
         #logger.info "Log de atualização de material: #{material_params}"
         format.html { redirect_to @material, notice: 'Material was successfully updated.' }
         format.json { render :show, status: :ok, location: @material }
@@ -116,6 +108,6 @@ def remove
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:name, :amount)
+      params.require(:material).permit(:name, :amount).merge({ whodunnit: current_user.id })
     end
 end

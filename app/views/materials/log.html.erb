@@ -14,10 +14,10 @@
   <tbody>
     <% @logs.each do |log| %>
       <tr>
-        <td><%= log.material_id %></td>
+        <td><%= log.material.name %></td>
         <td><%= log.operacao %></td>
         <td><%= log.qtd %></td>
-        <td><%= log.user_id %></td>
+        <td><%= log.user.email %></td>
       </tr>
     <% end %>
   </tbody>
