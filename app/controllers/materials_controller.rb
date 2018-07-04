@@ -6,15 +6,25 @@ class MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @materials = Material.all
+    #@logs.each do |log|
+      #puts log.user_id
+      #puts log.operacao
+      #puts log.qtd
+      #puts log.material_id
+    #end
   end
 
   # GET /materials/1
   # GET /materials/1.json
   def show
+
   end
 
-def log
-end
+  def log
+    @logs = Log.where(material_id: params[:id])
+  end
+
+
   # GET /materials/new
   def new
     @material = Material.new
@@ -97,6 +107,7 @@ def remove
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_material
       @material = Material.find(params[:id])
     end

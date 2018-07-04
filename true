@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20180704170215_add_name_uniqueness_index.rb

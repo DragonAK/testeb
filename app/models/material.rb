@@ -3,8 +3,6 @@ class Material < ApplicationRecord
   has_many :logs, autosave: true
 
   attr_accessor :whodunnit
-  
-  before_validation :show_logs 
 
   before_destroy :check_log
 
@@ -28,9 +26,9 @@ end
   def create_log
     #return if new_record?
     if amount_was > amount
-      operacao = "Retirada"
+      operacao = "Out"
     else
-      operacao = "Entrada"
+      operacao = "In"
     end
 
     logs.new({
