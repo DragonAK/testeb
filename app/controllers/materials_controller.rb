@@ -6,6 +6,8 @@ class MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @materials = Material.all
+    t = Time.now
+    puts t
     #@logs.each do |log|
       #puts log.user_id
       #puts log.operacao
